@@ -19,6 +19,7 @@ import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.client.util.store.FileDataStoreFactory;
 import com.google.api.services.drive.DriveScopes;
 import com.google.api.services.sheets.v4.SheetsScopes;
+import com.typesafe.config.ConfigException;
 import com.typesafe.config.ConfigFactory;
 
 public class GoogleApiBase {
@@ -28,10 +29,10 @@ public class GoogleApiBase {
 	/** Directory to store user credentials for this application. */
 	// Estava antes como: System.getProperty("user.home")
 	public static final java.io.File DATA_STORE_DIR = new java.io.File(
-			ConfigFactory.load().getString("google.config_dir"), ".credentials/sheets.googleapis.com");
+			getPathToAuthFiles(), ".credentials/sheets.googleapis.com");
 
 	public static final java.io.File DATA_STORE_CLIENT_FILE = new java.io.File(
-			ConfigFactory.load().getString("google.config_dir"), "client_secret.json");
+		getPathToAuthFiles(), "client_secret.json");
 
 	/** Global instance of the {@linSk FileDataStoreFactory}. */
 	public static FileDataStoreFactory DATA_STORE_FACTORY;
@@ -57,6 +58,15 @@ public class GoogleApiBase {
 		} catch (Throwable t) {
 			t.printStackTrace();
 			System.exit(1);
+		}
+	}
+
+
+	private static String getPathToAuthFiles() {
+		try {
+			return ConfigFactory.load().getString("google.config_dir");
+		} catch (ConfigException e) {
+			return ".";
 		}
 	}
 	/**
