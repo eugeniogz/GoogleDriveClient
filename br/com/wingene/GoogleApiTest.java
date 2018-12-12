@@ -40,6 +40,7 @@ public class GoogleApiTest {
 			alterar.add("Birthday");
 			gst.UpdateLine(alterar, 1, 1);
 
+			System.err.println("Tests completed sucessfuly");
 			// gst.deleteLines(1, 1);
 			/*
 			 * ArrayList<Object> inserir = new ArrayList<Object>(); inserir.add("D");

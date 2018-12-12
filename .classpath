@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" output="target/classes" path="home/jeugenio/GoogleDriveClient">
+	<classpathentry kind="src" output="target/classes" path="home/UFMG.BR/jeugenio/GoogleDriveClient">
 		<attributes>
 			<attribute name="optional" value="true"/>
 			<attribute name="maven.pomderived" value="true"/>
