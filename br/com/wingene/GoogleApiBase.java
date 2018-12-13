@@ -24,32 +24,32 @@ import com.typesafe.config.ConfigFactory;
 
 public class GoogleApiBase {
 	/** Application name. */
-	public static final String APPLICATION_NAME = "Google API Client";
+	protected static final String APPLICATION_NAME = "Google API Client";
 
 	/** Directory to store user credentials for this application. */
 	// Estava antes como: System.getProperty("user.home")
-	public static final java.io.File DATA_STORE_DIR = new java.io.File(
+	private static final java.io.File DATA_STORE_DIR = new java.io.File(
 			getPathToAuthFiles(), ".credentials/sheets.googleapis.com");
 
-	public static final java.io.File DATA_STORE_CLIENT_FILE = new java.io.File(
+	private static final java.io.File DATA_STORE_CLIENT_FILE = new java.io.File(
 		getPathToAuthFiles(), "client_secret.json");
 
-	/** Global instance of the {@linSk FileDataStoreFactory}. */
-	public static FileDataStoreFactory DATA_STORE_FACTORY;
+	/** Instance of the {@linSk FileDataStoreFactory}. */
+	private static FileDataStoreFactory DATA_STORE_FACTORY;
 
-	/** Global instance of the JSON factory. */
-	public static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
+	/** Istance of the JSON factory. */
+	protected static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
 
 	/** Global instance of the HTTP transport. */
-	public static HttpTransport HTTP_TRANSPORT;
+	protected static HttpTransport HTTP_TRANSPORT;
 	/**
 	 * Global instance of the scopes required.
 	 *
 	 * If modifying these scopes, delete the previously saved credentials at
-	 * hadatac.google.config_dir ->
+	 * getPathToAuthFiles() ->
 	 * .credentials/sheets.googleapis.com-java-quickstart
 	 */
-	public static final List<String> SCOPES = Arrays.asList(SheetsScopes.SPREADSHEETS, DriveScopes.DRIVE);
+	private static final List<String> SCOPES = Arrays.asList(SheetsScopes.SPREADSHEETS, DriveScopes.DRIVE);
 
 	static {
 		try {
